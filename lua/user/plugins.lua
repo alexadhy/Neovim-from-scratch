@@ -4,12 +4,8 @@ local fn = vim.fn
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
+    install_path
   }
   print "Installing packer close and reopen Neovim..."
   vim.cmd [[packadd packer.nvim]]
@@ -25,17 +21,17 @@ vim.cmd [[
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
+if not status_ok then return end
 
 -- Have packer use a popup window
 packer.init {
   display = {
     open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
+      return require("packer.util").float {
+        border = "rounded"
+      }
+    end
+  }
 }
 
 -- Install your plugins here
@@ -58,10 +54,10 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
+  use 'folke/trouble.nvim'
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
+  use "shaunsingh/nord.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -72,7 +68,7 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
 
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  use "L3MON4D3/LuaSnip" -- snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
@@ -87,16 +83,75 @@ return packer.startup(function(use)
   -- Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    run = ":TSUpdate"
+  }
+  use {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = 'nvim-treesitter'
   }
   use "JoosepAlviste/nvim-ts-context-commentstring"
 
   -- Git
   use "lewis6991/gitsigns.nvim"
 
+  -- Jumper
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v1',
+    config = function()
+      require'hop'.setup {
+        keys = 'arstdhneio;wfgm'
+      }
+    end
+  }
+  use 'mfussenegger/nvim-dap'
+  use {
+    'Pocco81/DAPInstall.nvim',
+    requires = 'mfussenegger/nvim-dap'
+  }
+  use {
+    'nvim-neorg/neorg',
+    config = function()
+      require("neorg").setup {
+        -- Tell Neorg what modules to load
+        load = {
+          ["core.defaults"] = {}, -- Load all the default modules
+          ["core.keybinds"] = { -- Configure core.keybinds
+            config = {
+              default_keybinds = true, -- Generate the default keybinds
+              neorg_leader = "<Leader>o", -- This is the default if unspecified
+            },
+          },
+          ["core.norg.concealer"] = {}, -- Allows for use of icons
+          ["core.norg.dirman"] = { -- Manage your directories with Neorg
+            config = {
+              workspaces = {
+                my_workspace = "~/Documents/norg",
+              },
+            },
+          },
+          ["core.gtd.base"] = {
+            config = {
+              workspace = "foo",
+            }
+          },
+          ["core.gtd.queries"] = {},
+          ["core.gtd.ui"] = {},
+          ["core.queries.native"] = {},
+          ["core.norg.completion"] = {
+            config = {
+              engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
+            },
+          },
+          ["core.presenter"] = {},
+          ["core.integrations.telescope"] = {},
+        },
+      }
+    end,
+    requires = "nvim-neorg/neorg-telescope" -- Be sure to pull in the repo
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
+  if PACKER_BOOTSTRAP then require("packer").sync() end
 end)

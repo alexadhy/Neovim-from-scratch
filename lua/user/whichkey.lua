@@ -84,6 +84,28 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
+  d = {
+    b = {
+      "<cmd>lua require 'dap'.toggle_breakpoint()<CR>",
+      'Toggle Breakpoint',
+    },
+    a = {
+      n = {
+        "<cmd>lua require 'scripts.dap'.attach_node()<CR>",
+        'Attach Node',
+      },
+    },
+    h = { "<cmd>lua require 'dap'.step_over()<CR>", 'Step Over' },
+    j = { "<cmd>lua require 'dap'.step_into()<CR>", 'Step Into' },
+    k = { "<cmd>lua require 'dap'.step_out()<CR>", 'Step Out' },
+    l = { "<cmd>lua require 'dap'.continue()<CR>", 'Continue' },
+    ['?'] = {
+      '<cmd>lua local widgets=require"dap.ui.widgets";widgets.centered_float(widgets.scopes)<CR>',
+      'Scopes',
+    },
+    K = { '<cmd>require"dap.ui.widgets".hover()<CR>', 'Hover' },
+  },
+
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -132,11 +154,11 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
+      "<cmd>TroubleToggle diagnostics<cr>",
       "Document Diagnostics",
     },
     w = {
-      "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+      "<cmd>Telescope diagnostic<cr>",
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
