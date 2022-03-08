@@ -26,13 +26,14 @@ local options = {
   tabstop = 2,                             -- insert 2 spaces for a tab
   cursorline = true,                       -- highlight the current line
   number = true,                           -- set numbered lines
-  relativenumber = false,                  -- set relative numbered lines
+  relativenumber = true,                  -- set relative numbered lines
   numberwidth = 4,                         -- set number column width to 2 {default 4}
   signcolumn = "yes",                      -- always show the sign column, otherwise it would shift the text each time
   wrap = false,                            -- display lines as one long line
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  listchars = [[trail:·,nbsp:␣,tab:  ]]
 }
 
 vim.opt.shortmess:append "c"
@@ -44,3 +45,26 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+local global_pkg_settings = {
+    netrw_silent = 1,
+    loaded_2html_plugin = 1,
+    loaded_gzip = 1,
+    loaded_man = 1,
+    loaded_matchit = 1,
+    loaded_matchparen = 1,
+    loaded_shada_plugin = 1,
+    loaded_spellfile_plugin = 1,
+    loaded_tarPlugin = 1,
+    loaded_tutor_mode_plugin = 1,
+    loaded_vimballPlugin = 1,
+    loaded_zipPlugin = 1,
+    loaded_netrwPlugin = 1,
+    loaded_python_provider = 0,
+    loaded_ruby_provider = 0,
+    loaded_perl_provider = 0,
+    loaded_node_provider = 0,
+    netrw_use_noswf = 0
+}
+
+for k, v in pairs(global_pkg_settings) do vim.g[k] = v end
