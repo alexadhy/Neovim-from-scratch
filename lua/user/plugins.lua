@@ -58,7 +58,10 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use "shaunsingh/nord.nvim"
+  use "shaunsingh/moonlight.nvim"
   use "folke/tokyonight.nvim"
+  use "projekt0n/github-nvim-theme" 
+  use "navarasu/onedark.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -149,6 +152,9 @@ return packer.startup(function(use)
         },
       }
     end,
+    use {
+      "folke/zen-mode.nvim"
+    },
     requires = "nvim-neorg/neorg-telescope" -- Be sure to pull in the repo
   }
 

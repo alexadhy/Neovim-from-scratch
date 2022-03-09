@@ -23,7 +23,7 @@ neorg.setup {
           },
           ["core.gtd.base"] = {
             config = {
-              workspace = "foo",
+              workspace = "my_workspace",
             }
           },
           ["core.gtd.queries"] = {},
@@ -34,7 +34,11 @@ neorg.setup {
               engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
             },
           },
-          ["core.presenter"] = {},
+          ["core.presenter"] = {
+            config = {
+              zen_mode = "zen-mode",
+            },
+          },
           ["core.integrations.telescope"] = {},
         },
 }
