@@ -57,11 +57,12 @@ return packer.startup(function(use)
   use 'folke/trouble.nvim'
 
   -- Colorschemes
-  use "shaunsingh/nord.nvim"
-  use "shaunsingh/moonlight.nvim"
+  -- use "shaunsingh/nord.nvim"
+  -- use "shaunsingh/moonlight.nvim"
   use "folke/tokyonight.nvim"
-  use "projekt0n/github-nvim-theme" 
-  use "navarasu/onedark.nvim"
+  -- use {"catppuccin/nvim", as = 'catppuccin'}
+  -- use "projekt0n/github-nvim-theme" 
+  -- use "navarasu/onedark.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -115,47 +116,11 @@ return packer.startup(function(use)
   }
   use {
     'nvim-neorg/neorg',
-    config = function()
-      require("neorg").setup {
-        -- Tell Neorg what modules to load
-        load = {
-          ["core.defaults"] = {}, -- Load all the default modules
-          ["core.keybinds"] = { -- Configure core.keybinds
-            config = {
-              default_keybinds = true, -- Generate the default keybinds
-              neorg_leader = "<Leader>o", -- This is the default if unspecified
-            },
-          },
-          ["core.norg.concealer"] = {}, -- Allows for use of icons
-          ["core.norg.dirman"] = { -- Manage your directories with Neorg
-            config = {
-              workspaces = {
-                my_workspace = "~/Documents/norg",
-              },
-            },
-          },
-          ["core.gtd.base"] = {
-            config = {
-              workspace = "foo",
-            }
-          },
-          ["core.gtd.queries"] = {},
-          ["core.gtd.ui"] = {},
-          ["core.queries.native"] = {},
-          ["core.norg.completion"] = {
-            config = {
-              engine = "nvim-cmp", -- We current support nvim-compe and nvim-cmp only
-            },
-          },
-          ["core.presenter"] = {},
-          ["core.integrations.telescope"] = {},
-        },
-      }
-    end,
-    use {
-      "folke/zen-mode.nvim"
-    },
     requires = "nvim-neorg/neorg-telescope" -- Be sure to pull in the repo
+  }
+  use {
+    "folke/twilight.nvim",
+    requires = "folke/zen-mode.nvim",
   }
 
   -- Automatically set up your configuration after cloning packer.nvim

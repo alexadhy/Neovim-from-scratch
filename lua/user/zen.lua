@@ -10,7 +10,7 @@ zen_mode.setup({
 		width = 0.85,
 		options = {
 			signcolumn = "no", -- disable signcolumn
-			number = true, -- disable number column
+			number = false, -- disable number column
 			relativenumber = true, -- disable relative numbers
 			-- cursorline = false, -- disable cursorline
 			-- cursorcolumn = false, -- disable cursor column

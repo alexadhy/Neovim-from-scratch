@@ -85,6 +85,7 @@ local mappings = {
     "Buffers",
   },
   d = {
+    name = "DAP",
     b = {
       "<cmd>lua require 'dap'.toggle_breakpoint()<CR>",
       'Toggle Breakpoint',
