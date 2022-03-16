@@ -60,7 +60,8 @@ return packer.startup(function(use)
   -- use "shaunsingh/nord.nvim"
   -- use "shaunsingh/moonlight.nvim"
   use "folke/tokyonight.nvim"
-  -- use {"catppuccin/nvim", as = 'catppuccin'}
+  use 'rebelot/kanagawa.nvim'
+  use {"catppuccin/nvim", as = 'catppuccin'}
   -- use "projekt0n/github-nvim-theme" 
   -- use "navarasu/onedark.nvim"
 

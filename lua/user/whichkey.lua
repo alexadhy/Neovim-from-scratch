@@ -155,11 +155,11 @@ local mappings = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>TroubleToggle diagnostics<cr>",
+      "<cmd>TroubleToggle<cr>",
       "Document Diagnostics",
     },
     w = {
-      "<cmd>Telescope diagnostic<cr>",
+      "<cmd>Telescope diagnostics<cr>",
       "Workspace Diagnostics",
     },
     f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
@@ -207,6 +207,26 @@ local mappings = {
 
   ["z"] = { "<cmd>ZenMode<cr>", "Zen" },
 }
+
+function set_norg_keybinds()
+    which_key.register({
+    n = {
+      name = "Neorg",
+      g = {
+        name = "GTD",
+        c = {"<cmd>Neorg gtd capture<cr>", "capture"},
+        v = {"<cmd>Neorg gtd views<cr>", "views"}
+      },
+      i = {"<cmd>Neorg inject_metadata<cr>", "inject metadata"},
+      p = {
+        name = "Presenter",
+        s = {"<cmd>Neorg presenter start<cr>", "start"},
+        c = {"<cmd>Neorg presenter close<cr>", "close"}
+      }
+    }
+  }, opts)
+end
+vim.cmd([[autocmd FileType norg lua set_norg_keybinds()]])
 
 which_key.setup(setup)
 which_key.register(mappings, opts)
