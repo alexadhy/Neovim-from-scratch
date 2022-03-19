@@ -60,10 +60,10 @@ return packer.startup(function(use)
   -- use "shaunsingh/nord.nvim"
   -- use "shaunsingh/moonlight.nvim"
   use "folke/tokyonight.nvim"
-  use 'rebelot/kanagawa.nvim'
-  use {"catppuccin/nvim", as = 'catppuccin'}
+  -- use 'rebelot/kanagawa.nvim'
+  -- use {"catppuccin/nvim", as = 'catppuccin'}
   -- use "projekt0n/github-nvim-theme" 
-  -- use "navarasu/onedark.nvim"
+  use "navarasu/onedark.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -123,6 +123,10 @@ return packer.startup(function(use)
     "folke/twilight.nvim",
     requires = "folke/zen-mode.nvim",
   }
+
+  use {"KCaverly/py.nvim", ft = {"python"}, config = function() require("py").setup() end}
+
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

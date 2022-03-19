@@ -30,6 +30,7 @@ end
 
 require("lualine").setup({
 	options = {
+    globalstatus = true,
 		component_separators = "|",
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
