@@ -59,8 +59,7 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "shaunsingh/nord.nvim"
   -- use "shaunsingh/moonlight.nvim"
-  use "folke/tokyonight.nvim"
-  -- use 'rebelot/kanagawa.nvim'
+  -- use "folke/tokyonight.nvim"
   -- use {"catppuccin/nvim", as = 'catppuccin'}
   -- use "projekt0n/github-nvim-theme" 
   use "navarasu/onedark.nvim"
@@ -99,6 +98,7 @@ return packer.startup(function(use)
 
   -- Git
   use "lewis6991/gitsigns.nvim"
+  use 'pwntester/octo.nvim'
 
   -- Jumper
   use {
@@ -123,10 +123,6 @@ return packer.startup(function(use)
     "folke/twilight.nvim",
     requires = "folke/zen-mode.nvim",
   }
-
-  use {"KCaverly/py.nvim", ft = {"python"}, config = function() require("py").setup() end}
-
-
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

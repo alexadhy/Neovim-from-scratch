@@ -31,11 +31,20 @@ require('onedark').setup  {
     },
 }
 
+-- require("github-theme").setup({
+--   theme_style = "dark",
+--   comment_style = "italic",
+--
+--   -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+--   colors = {hint = "orange", error = "#ff0000"},
+-- })
+
 vim.cmd [[
 try
   " colorscheme tokyonight
   " colorscheme kanagawa
   colorscheme onedark
+"   colorscheme github_dark
 catch /^Vim\%((\a\+)\)\=:E185/
   colorscheme default
   set background=dark
