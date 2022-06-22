@@ -55,14 +55,17 @@ return packer.startup(function(use)
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
   use 'folke/trouble.nvim'
+  use 'norcalli/nvim-colorizer.lua'
 
   -- Colorschemes
   -- use "shaunsingh/nord.nvim"
   -- use "shaunsingh/moonlight.nvim"
-  -- use "folke/tokyonight.nvim"
+  use "folke/tokyonight.nvim"
   -- use {"catppuccin/nvim", as = 'catppuccin'}
-  -- use "projekt0n/github-nvim-theme" 
-  use "navarasu/onedark.nvim"
+  -- use "projekt0n/github-nvim-theme"
+  -- use 'alexadhy/carbon.nvim'
+  -- use 'michaeldyrynda/carbon.vim'
+  -- use "navarasu/onedark.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -99,6 +102,7 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
   use 'pwntester/octo.nvim'
+  use 'TimUntersberger/neogit'
 
   -- Jumper
   use {
